@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, watch, onMounted, onUnmounted } from 'vue';
+import { defineComponent, onMounted, onUnmounted, watch } from 'vue';
 import { usePlot } from './composables/usePlot';
 
 export interface WebsocketLayerProps {
@@ -52,11 +52,7 @@ export default defineComponent({
 
         if (newWsurl !== prevWsurl) {
           plot.deoverlay(layer);
-          layer = plot.overlay_websocket(
-            newWsurl,
-            props.overrides,
-            newOptions,
-          );
+          layer = plot.overlay_websocket(newWsurl, props.overrides, newOptions);
         } else if (newOptions !== prevOptions) {
           const l = plot.get_layer(layer);
           if (l && newOptions != null) {

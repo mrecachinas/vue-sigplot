@@ -14,11 +14,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from 'vue';
-import SigPlot from './SigPlot.vue';
+import { computed, onMounted, onUnmounted, ref } from 'vue';
 import ArrayLayer from './ArrayLayer.vue';
 import HrefLayer from './HrefLayer.vue';
 import PipeLayer from './PipeLayer.vue';
+import SigPlot from './SigPlot.vue';
 
 const btnToggle = ref(false);
 const href1 = 'https://sigplot.lgsinnovations.com/dat/penny.prm';

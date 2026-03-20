@@ -1,9 +1,9 @@
-import { describe, it, expect, vi, afterEach } from 'vitest';
 import { render } from '@testing-library/vue';
 import { Plot } from 'sigplot';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import { defineComponent, h, shallowRef } from 'vue';
-import Plugin from '../src/Plugin.vue';
 import { SIGPLOT_KEY } from '../src/composables/usePlot';
+import Plugin from '../src/Plugin.vue';
 
 function renderWithPlot(
   plot: Plot,

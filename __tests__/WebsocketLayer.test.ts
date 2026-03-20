@@ -1,9 +1,9 @@
-import { describe, it, expect, vi, afterEach } from 'vitest';
 import { render } from '@testing-library/vue';
 import { Plot } from 'sigplot';
-import { defineComponent, ref, h, nextTick, shallowRef } from 'vue';
-import WebsocketLayer from '../src/WebsocketLayer.vue';
+import { afterEach, describe, expect, it, vi } from 'vitest';
+import { defineComponent, h, nextTick, ref, shallowRef } from 'vue';
 import { SIGPLOT_KEY } from '../src/composables/usePlot';
+import WebsocketLayer from '../src/WebsocketLayer.vue';
 
 function renderWithPlot(
   plot: Plot,
@@ -38,8 +38,7 @@ describe('<WebsocketLayer />', () => {
       setup() {
         // Access counter to trigger re-render
         const _ = counter.value;
-        return () =>
-          h(WebsocketLayer, { wsurl: websocketURL, options });
+        return () => h(WebsocketLayer, { wsurl: websocketURL, options });
       },
     });
 
@@ -68,8 +67,7 @@ describe('<WebsocketLayer />', () => {
 
     const TestComp = defineComponent({
       setup() {
-        return () =>
-          h(WebsocketLayer, { wsurl: wsurl.value, options });
+        return () => h(WebsocketLayer, { wsurl: wsurl.value, options });
       },
     });
 

@@ -11,7 +11,7 @@ HTMLCanvasElement.prototype.getContext = function (
   type: string,
   ...args: unknown[]
 ) {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // biome-ignore lint/suspicious/noExplicitAny: canvas mock requires untyped getContext call
   const ctx = (origGetContext as any).call(this, type, ...args);
   if (ctx && type === '2d') {
     let currentFontSize = 10;

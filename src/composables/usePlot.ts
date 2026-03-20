@@ -1,5 +1,5 @@
-import { inject, type InjectionKey, type Ref } from 'vue';
 import type { Plot } from 'sigplot';
+import { type InjectionKey, inject, type Ref } from 'vue';
 
 export const SIGPLOT_KEY: InjectionKey<Ref<Plot | null>> = Symbol('sigplot');
 

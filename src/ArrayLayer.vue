@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, watch, onMounted, onUnmounted } from 'vue';
+import { defineComponent, onMounted, onUnmounted, watch } from 'vue';
 import { usePlot } from './composables/usePlot';
 
 export interface ArrayLayerProps {

@@ -27,28 +27,25 @@
       "require": "./dist/vue-sigplot.umd.js"
     }
   },
-  "files": [
-    "dist",
-    "src"
-  ],
+  "files": ["dist", "src"],
   "scripts": {
     "dev": "vite",
     "build": "vite build && vue-tsc --declaration --emitDeclarationOnly",
     "clean": "rm -rf ./dist",
     "test": "vitest run",
     "test:watch": "vitest",
-    "typecheck": "vue-tsc --noEmit"
+    "typecheck": "vue-tsc --noEmit",
+    "lint": "biome check",
+    "lint:fix": "biome check --write",
+    "format": "biome format --write"
   },
   "dependencies": {
     "sigplot": "^2.0.0-rc20"
   },
-  "prettier": {
-    "singleQuote": true,
-    "tabWidth": 2
-  },
   "devDependencies": {
-    "@testing-library/vue": "^8.0.0",
+    "@biomejs/biome": "2.4.8",
     "@testing-library/dom": "^10.4.1",
+    "@testing-library/vue": "^8.0.0",
     "@vitejs/plugin-vue": "^5.0.0",
     "@vitest/coverage-v8": "^3.2.4",
     "canvas": "^2.11.2",
@@ -65,4 +62,3 @@
     "vue": "^3.5.0"
   }
 }
-

@@ -1,12 +1,12 @@
-import { describe, it, expect, vi, afterEach } from 'vitest';
 import { render } from '@testing-library/vue';
 import { Plot } from 'sigplot';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import { defineComponent, h, nextTick } from 'vue';
-import SigPlot from '../src/SigPlot.vue';
 import ArrayLayer from '../src/ArrayLayer.vue';
-import PipeLayer from '../src/PipeLayer.vue';
-import HrefLayer from '../src/HrefLayer.vue';
 import { usePlot } from '../src/composables/usePlot';
+import HrefLayer from '../src/HrefLayer.vue';
+import PipeLayer from '../src/PipeLayer.vue';
+import SigPlot from '../src/SigPlot.vue';
 
 // Helper component to capture the Plot instance from context
 let capturedPlot: Plot | null = null;
@@ -34,11 +34,11 @@ describe('<SigPlot />', () => {
     expect(div.style.height).toBe('300px');
     expect(div.style.display).toBe('inline-block');
     expect(capturedPlot).not.toBeNull();
-    expect(capturedPlot!._Gx.all).toBe(true);
-    expect(capturedPlot!._Gx.expand).toBe(true);
-    expect(capturedPlot!._Gx.autol).toBe(100);
-    expect(capturedPlot!._Gx.autohide_panbars).toBe(true);
-    expect(capturedPlot!._Gx.lyr).toHaveLength(0);
+    expect(capturedPlot?._Gx.all).toBe(true);
+    expect(capturedPlot?._Gx.expand).toBe(true);
+    expect(capturedPlot?._Gx.autol).toBe(100);
+    expect(capturedPlot?._Gx.autohide_panbars).toBe(true);
+    expect(capturedPlot?._Gx.lyr).toHaveLength(0);
   });
 
   it('renders with no child layer with custom height and width', async () => {
@@ -52,11 +52,11 @@ describe('<SigPlot />', () => {
     expect(div.style.height).toBe('500px');
     expect(div.style.display).toBe('inline-block');
     expect(capturedPlot).not.toBeNull();
-    expect(capturedPlot!._Gx.all).toBe(true);
-    expect(capturedPlot!._Gx.expand).toBe(true);
-    expect(capturedPlot!._Gx.autol).toBe(100);
-    expect(capturedPlot!._Gx.autohide_panbars).toBe(true);
-    expect(capturedPlot!._Gx.lyr).toHaveLength(0);
+    expect(capturedPlot?._Gx.all).toBe(true);
+    expect(capturedPlot?._Gx.expand).toBe(true);
+    expect(capturedPlot?._Gx.autol).toBe(100);
+    expect(capturedPlot?._Gx.autohide_panbars).toBe(true);
+    expect(capturedPlot?._Gx.lyr).toHaveLength(0);
   });
 
   it('handles changing custom height and width', async () => {
@@ -95,18 +95,18 @@ describe('<SigPlot />', () => {
     });
     await nextTick();
     expect(capturedPlot).not.toBeNull();
-    expect(capturedPlot!._Gx.all).toBe(true);
-    expect(capturedPlot!._Gx.expand).toBe(true);
-    expect(capturedPlot!._Gx.autol).toBe(100);
-    expect(capturedPlot!._Gx.autohide_panbars).toBe(true);
+    expect(capturedPlot?._Gx.all).toBe(true);
+    expect(capturedPlot?._Gx.expand).toBe(true);
+    expect(capturedPlot?._Gx.autol).toBe(100);
+    expect(capturedPlot?._Gx.autohide_panbars).toBe(true);
 
     const newOptions = {
       all: false,
       autol: 200,
     };
     await rerender({ options: newOptions });
-    expect(capturedPlot!._Gx.all).toBe(false);
-    expect(capturedPlot!._Gx.autol).toBe(200);
+    expect(capturedPlot?._Gx.all).toBe(false);
+    expect(capturedPlot?._Gx.autol).toBe(200);
   });
 
   it('renders with no child layer with custom options and custom height and width', async () => {
@@ -126,11 +126,11 @@ describe('<SigPlot />', () => {
     expect(div.style.height).toBe('500px');
     expect(div.style.display).toBe('inline-block');
     expect(capturedPlot).not.toBeNull();
-    expect(capturedPlot!._Gx.all).toBe(false);
-    expect(capturedPlot!._Gx.expand).toBe(false);
-    expect(capturedPlot!._Gx.autol).toBe(1);
-    expect(capturedPlot!._Gx.autohide_panbars).toBe(false);
-    expect(capturedPlot!._Gx.lyr).toHaveLength(0);
+    expect(capturedPlot?._Gx.all).toBe(false);
+    expect(capturedPlot?._Gx.expand).toBe(false);
+    expect(capturedPlot?._Gx.autol).toBe(1);
+    expect(capturedPlot?._Gx.autohide_panbars).toBe(false);
+    expect(capturedPlot?._Gx.lyr).toHaveLength(0);
   });
 
   it('renders with 1D ArrayLayer with no data', async () => {
@@ -156,12 +156,12 @@ describe('<SigPlot />', () => {
     await nextTick();
     await nextTick();
     expect(capturedPlot).not.toBeNull();
-    expect(capturedPlot!._Gx.all).toBe(true);
-    expect(capturedPlot!._Gx.expand).toBe(true);
-    expect(capturedPlot!._Gx.autol).toBe(100);
-    expect(capturedPlot!._Gx.autohide_panbars).toBe(true);
-    expect(capturedPlot!._Gx.lyr).toHaveLength(1);
-    expect(capturedPlot!._Gx.lyr[0].ypoint).toBeNull();
+    expect(capturedPlot?._Gx.all).toBe(true);
+    expect(capturedPlot?._Gx.expand).toBe(true);
+    expect(capturedPlot?._Gx.autol).toBe(100);
+    expect(capturedPlot?._Gx.autohide_panbars).toBe(true);
+    expect(capturedPlot?._Gx.lyr).toHaveLength(1);
+    expect(capturedPlot?._Gx.lyr[0].ypoint).toBeNull();
   });
 
   it('renders with 2 1D ArrayLayers with no data', async () => {
@@ -187,9 +187,9 @@ describe('<SigPlot />', () => {
     await nextTick();
     await nextTick();
     expect(capturedPlot).not.toBeNull();
-    expect(capturedPlot!._Gx.lyr).toHaveLength(2);
-    expect(capturedPlot!._Gx.lyr[0].ypoint).toBeNull();
-    expect(capturedPlot!._Gx.lyr[1].ypoint).toBeNull();
+    expect(capturedPlot?._Gx.lyr).toHaveLength(2);
+    expect(capturedPlot?._Gx.lyr[0].ypoint).toBeNull();
+    expect(capturedPlot?._Gx.lyr[1].ypoint).toBeNull();
   });
 
   it('renders with 1D ArrayLayer with data', async () => {
@@ -218,11 +218,9 @@ describe('<SigPlot />', () => {
     await nextTick();
     await nextTick();
     expect(capturedPlot).not.toBeNull();
-    expect(capturedPlot!._Gx.lyr).toHaveLength(1);
-    expect(capturedPlot!._Gx.lyr[0].ypoint).toHaveLength(random.length);
-    expect(capturedPlot!._Gx.lyr[0].ypoint).toEqual(
-      new Float64Array(random),
-    );
+    expect(capturedPlot?._Gx.lyr).toHaveLength(1);
+    expect(capturedPlot?._Gx.lyr[0].ypoint).toHaveLength(random.length);
+    expect(capturedPlot?._Gx.lyr[0].ypoint).toEqual(new Float64Array(random));
   });
 
   it('renders with 2 1D ArrayLayers with data', async () => {
@@ -258,15 +256,11 @@ describe('<SigPlot />', () => {
     await nextTick();
     await nextTick();
     expect(capturedPlot).not.toBeNull();
-    expect(capturedPlot!._Gx.lyr).toHaveLength(2);
-    expect(capturedPlot!._Gx.lyr[0].ypoint).toHaveLength(random1.length);
-    expect(capturedPlot!._Gx.lyr[0].ypoint).toEqual(
-      new Float64Array(random1),
-    );
-    expect(capturedPlot!._Gx.lyr[1].ypoint).toHaveLength(random2.length);
-    expect(capturedPlot!._Gx.lyr[1].ypoint).toEqual(
-      new Float64Array(random2),
-    );
+    expect(capturedPlot?._Gx.lyr).toHaveLength(2);
+    expect(capturedPlot?._Gx.lyr[0].ypoint).toHaveLength(random1.length);
+    expect(capturedPlot?._Gx.lyr[0].ypoint).toEqual(new Float64Array(random1));
+    expect(capturedPlot?._Gx.lyr[1].ypoint).toHaveLength(random2.length);
+    expect(capturedPlot?._Gx.lyr[1].ypoint).toEqual(new Float64Array(random2));
   });
 
   it('renders with PipeLayer', async () => {
@@ -292,9 +286,9 @@ describe('<SigPlot />', () => {
     await nextTick();
     await nextTick();
     expect(capturedPlot).not.toBeNull();
-    expect(capturedPlot!._Gx.lyr).toHaveLength(1);
-    expect(capturedPlot!._Gx.lyr[0].hcb.subsize).toBe(1000);
-    expect(capturedPlot!._Gx.lyr[0].hcb.type).toBe(2000);
+    expect(capturedPlot?._Gx.lyr).toHaveLength(1);
+    expect(capturedPlot?._Gx.lyr[0].hcb.subsize).toBe(1000);
+    expect(capturedPlot?._Gx.lyr[0].hcb.type).toBe(2000);
   });
 
   it('renders with HrefLayer', async () => {

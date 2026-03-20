@@ -1,7 +1,7 @@
-import { describe, it, expect, vi, afterEach } from 'vitest';
 import { render } from '@testing-library/vue';
 import { Plot } from 'sigplot';
-import { defineComponent, ref, h, nextTick, shallowRef } from 'vue';
+import { afterEach, describe, expect, it, vi } from 'vitest';
+import { defineComponent, h, nextTick, ref, shallowRef } from 'vue';
 import BlueLayer from '../src/BlueLayer.vue';
 import { SIGPLOT_KEY } from '../src/composables/usePlot';
 
